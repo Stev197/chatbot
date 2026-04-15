@@ -1,0 +1,209 @@
+
+
+<!-- JANNGAN DI JUAL NGENTOT -->
+<!-- TELEGRAM: @XBhigh -->
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Web Assistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div id="loginModal" class="modal">
+        <div class="modal-content animate__animated">
+            <div class="modal-header">
+                <i class="fas fa-user-circle"></i>
+                <h2>Selamat Datang</h2>
+                <p>Silakan masukkan data Anda untuk melanjutkan</p>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" placeholder="Masukkan username" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Masukkan password" required>
+                    </div>
+                    <button type="submit" class="btn-login">
+                        <i class="fas fa-sign-in-alt"></i> Masuk
+                    </button>
+                </form>
+                <div class="modal-footer">
+                    <p><i class="fas fa-shield-alt"></i> Data Anda aman dengan kami</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <h2>ChatGPT<span>Web</span></h2>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar-menu">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <h3 id="displayUsername">Guest</h3>
+                    <p><i class="fas fa-circle online-status"></i> Online</p>
+                </div>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li class="active">
+                        <a href="#">
+                            <i class="fas fa-home"></i>
+                            <span>Beranda</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-comments"></i>
+                            <span>Percakapan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-history"></i>
+                            <span>Riwayat</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-cog"></i>
+                            <span>Pengaturan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Bantuan</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                    <span>Tema Gelap</span>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="themeToggle">
+                        <label for="themeToggle"></label>
+                    </div>
+                </div>
+                <button class="btn-logout" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Keluar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="main-content">
+        <header class="main-header">
+            <h1><i class="fas fa-comment-dots"></i> Asisten ChatGPT</h1>
+            <div class="header-actions">
+                <button class="btn-new-chat">
+                    <i class="fas fa-plus"></i> Percakapan Baru
+                </button>
+                <div class="notification">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="chat-container">
+            <div class="chat-welcome">
+                <div class="welcome-icon animate__animated">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h2>Halo, <span id="welcomeUsername">Pengguna</span>!</h2>
+                <p>Saya adalah asisten AI yang siap membantu Anda. Silakan ajukan pertanyaan apa saja.</p>
+                <div class="quick-prompts">
+                    <h3><i class="fas fa-bolt"></i> Contoh Pertanyaan Cepat:</h3>
+                    <div class="prompts-grid">
+                        <button class="prompt-btn" data-prompt="Jelaskan tentang teknologi AI dalam bahasa sederhana">
+                            <i class="fas fa-lightbulb"></i> Jelaskan AI
+                        </button>
+                        <button class="prompt-btn" data-prompt="Buatkan rencana diet sehat untuk seminggu">
+                            <i class="fas fa-apple-alt"></i> Rencana Diet
+                        </button>
+                        <button class="prompt-btn" data-prompt="Berikan tips untuk meningkatkan produktivitas kerja">
+                            <i class="fas fa-chart-line"></i> Tips Produktivitas
+                        </button>
+                        <button class="prompt-btn" data-prompt="Rekomendasikan buku fiksi ilmiah yang bagus">
+                            <i class="fas fa-book"></i> Rekomendasi Buku
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+             
+            </div>
+            
+            <div class="chat-input-container">
+                <form id="chatForm">
+                    <div class="input-wrapper">
+                        <input type="text" id="userInput" placeholder="Ketik pesan Anda di sini..." autocomplete="off">
+                        <div class="input-actions">
+                            <button type="button" class="btn-action" id="voiceBtn">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <button type="button" class="btn-action" id="attachBtn">
+                                <i class="fas fa-paperclip"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-send">
+                        <i class="fas fa-paper-plane"></i> Kirim
+                    </button>
+                </form>
+                <div class="input-footer">
+                    <p><i class="fas fa-info-circle"></i> ChatGPT dapat membuat kesalahan. Periksa informasi penting.</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="main-footer">
+            <p><i class="fas fa-code"></i> Credit By <i class="fas fa-heart"></i> Smoothing</p>
+            <p class="copyright">ChatGPT Web Sesason • <span id="currentYear"></span></p>
+        </footer>
+    </div>
+
+    
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner">
+                <i class="fas fa-circle-notch"></i>
+            </div>
+            <p>loading...</p>
+        </div>
+    </div>
+
+    <script src="smooth.js"></script>
+</body>
+</html>
